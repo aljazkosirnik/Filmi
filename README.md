@@ -4,6 +4,8 @@
 
 Site is getting the data from an open API and sorting it by popular, you can view more information about each movie that is done by sending the movie_id to GET correct JSON through the API. You can also add the movie to favorites which are stored on Google App Engine.
 
+Page is live on: https://filmi-aljazkosirnik.appspot.com/
+
 ## Built With
 
 * [TMDb](https://developers.themoviedb.org/3/getting-started/introduction) - The Movie Database (TMDb) API
