@@ -12,10 +12,10 @@ Site is getting the data from an open API and sorting it by popular, you can vie
 
 ## Todo
 
-*Make it responsive for all devices
-*Finish the UI and think about better UX
-*Make a login page for users to make their own account or login trough Gmail, Facebook etc.
-*Make a filter that can not only sort movies by popular, new, trendy but also for TV shows 
+* Make it responsive for all devices
+* Finish the UI and think about better UX
+* Make a login page for users to make their own account or login trough Gmail, Facebook etc.
+* Make a filter that can not only sort movies by popular, new, trendy but also for TV shows 
 
 
 ## Author
