@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <title>Filmi | {{ naziv }}</title>
+    <link rel="stylesheet" href="/assets/css/film.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <nav class="nav">
+        <h1>{{ naziv }}</h1>
+        <ul>
+          <li><a class="btn-dark" href="/">Domov</a></li>
+          <li><a class="btn-dark" href="/moji-filmi/">Moji filmi</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section>
+      <div class="content">
+        <div class="display">
+          <img src="{{ back_slika }}" alt="background image" />
+          <div class="display-text">
+            <h1>{{ naziv }}</h1>
+            <h3>{{ kratek_opis }}</h3>
+          </div>
+        </div>
+        <div class="movie">
+          <div class="movie-content">
+            <img src="{{ slika }}" />
+            <div class="movie-text">
+              <h2>{{ naziv }}</h2>
+              <p>{{ opis }}</p>
+              <h4>
+                Ocena
+                <span class="ocena">{{ ocena }} / 10</span>
+              </h4>
+              <h5>Datum izdaje: {{ datum_izdaje }}</h5>
+              <h5>
+                Proračun: <span id="proracun">{{ proracun }}</span>
+              </h5>
+              <h5>
+                Zaslužek: <span id="zasluzek">{{ zasluzek }}</span>
+              </h5>
+              <h4>Čas filma: {{ cas }} min</h4>
+              <span class="movie-zvrsti"
+                >{% for z in zvrsti %}
+                <h3>{{ z }}</h3>
+                {% endfor %}</span
+              >
+            </div>
+          </div>
+          <div class="movie-production">
+            <h1>Produkcija</h1>
+            {% for p in produkcija %}
+            <h3>{{ p }}</h3>
+            {% endfor %}
+          </div>
+          <div class="video">
+            <!-- <iframe width="100%" height="100%" src="{{ video }}"> </iframe> -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      var proracun = document.getElementById("proracun");
+      var zasluzek = document.getElementById("zasluzek");
+      function getDollar(num) {
+        Number.prototype.format = function(n, x) {
+          var re =
+            "(\\d)(?=(\\d{" + (x || 3) + "})+" + (n > 0 ? "\\." : "$") + ")";
+          return this.toFixed(Math.max(0, ~~n)).replace(
+            new RegExp(re, "g"),
+            "$1,"
+          );
+        };
+        var number = parseInt(num.innerHTML);
+        var formatedNum = "  $ " + number.format(2);
+        num.innerHTML = formatedNum;
+      }
+      getDollar(proracun);
+      getDollar(zasluzek);
+    </script>
+  </body>
+</html>

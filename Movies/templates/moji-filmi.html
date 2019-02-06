@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <title>Filmi</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <nav class="nav">
+        <h1>Moji Filmi</h1>
+        <ul>
+          <li><a class="btn-dark" href="/">Domov</a></li>
+          <li><a class="btn-dark" href="/moji-filmi/">Moji filmi</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section id="filmi">
+      <table cellspacing="0">
+        <tbody>
+          {% for v in moji_filmi %}
+          <tr>
+            <td valign="bottom">
+              <div class="img-col">
+                <img src="{{ v.img }}" />
+              </div>
+              <div class="text-col">
+                <h2>{{ v.naziv }}</h2>
+                <p>{{ v.opis }}</p>
+                <h5 class="datum-izdaje">{{ v.datum_izdaje }}</h5>
+                <h4>
+                  Ocena
+                  <span class="ocena">{{ v.ocena }} / 10</span>
+                </h4>
+                <form method="POST" class="text-button">
+                  <input
+                    class="hidden"
+                    value="{{ v.film_id }}"
+                    id="film_id"
+                    name="film_id"
+                  />
+                  <a class="btn-light" href="/film/{{ v.film_id }}/"
+                    >Več informacij</a
+                  >
+                  <a class="btn-light" href="/izbrisi/{{ v.key.id() }}/"
+                    >Izbriši iz priljubljenih</a
+                  >
+                </form>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+    <footer></footer>
+    <script>
+      window.onload = function() {
+        if (!window.location.hash) {
+          window.location = window.location + "#loaded";
+          window.location.reload();
+        }
+      };
+    </script>
+  </body>
+</html>
