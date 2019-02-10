@@ -25,7 +25,7 @@ Page is live on: https://filmi-aljazkosirnik.appspot.com/
 
 ## Author
 
-* **Aljaž Kosirnik** - *Initial work* - [AljazKosirnik](https://github.com/aljazkosirnik)
+* **Aljaž Kosirnik** - [AljazKosirnik](https://github.com/aljazkosirnik)
 
 
-* Inspiration comes from SmartNinja school project
+* Inspiration comes from SmartNinja school project with my own twist
