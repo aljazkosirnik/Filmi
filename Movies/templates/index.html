@@ -5,62 +5,39 @@
     <title>Filmi</title>
     <link rel="stylesheet" href="/assets/css/style.css" />
     <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <link
       href="https://fonts.googleapis.com/css?family=Roboto"
       rel="stylesheet"
     />
   </head>
   <body>
-    <header>
-      <nav class="nav">
-        {% if stran == 1 %}
-          <h1>Filmi</h1>
-        {% else %}
-          <h1>Filmi stran {{ stran }}</h1>
-        {% endif %}
-        <ul>
-          <li><a class="btn-dark" href="/">Domov</a></li>
-          <li><a class="btn-dark" href="/moji-filmi/">Moji filmi</a></li>
-        </ul>
-      </nav>
-    </header>
-    <section id="filmi">
-      <table cellspacing="0">
-        <tbody>
-          {% for v in vsi %}
-          <tr>
-            <td valign="bottom">
-              <div class="img-col">
-                <img src="{{ v.img }}" />
-              </div>
-              <div class="text-col">
-                <h2>{{ v.naziv }}</h2>
-                <p>{{ v.opis }}</p>
-                <h5 class="datum-izdaje">{{ v.datum_izdaje }}</h5>
-                <h4>Ocena
-                  <span class="ocena">{{ v.ocena }} / 10</span>
-                </h4>
-                <form method="POST" class="text-button">
-                  <input class="hidden" value="{{v.id_s}}" id="film_id" name="film_id">
-                  <input class="hidden" value="{{ v.naziv }}" id="naziv" name="naziv">
-                  <input class="hidden" value="{{ v.opis }}" id="opis" name="opis">
-                  <input class="hidden" value="{{ v.img }}" id="img" name="img">
-                  <input class="hidden" value="{{ v.datum_izdaje }}" id="datum_izdaje" name="datum_izdaje">
-                  <input class="hidden" value="{{ v.ocena }}" id="ocena" name="ocena">
-                  <a class="btn-light" href="/film/{{v.id_s}}/">Več informacij</a>
-                  <input type="submit" value="Dodaj med priljubljene" id="dodaj" name="dodaj" class="btn-light" href="/moji-filmi/"></input>
-                </form>
-              </div>
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+    <section>
+      <h1>FILMI</h1>
+      <div>
+        <a href="/stran/1/" class="btn-light">Popularno</a>
+        <a href="#" class="disabled btn-light">Filmi</a>
+        <a href="#" class="disabled btn-light">Tv Oddaje</a>
+        <a href="/moji-filmi/" class="btn-light">Moji Filmi</a>
+      </div>
     </section>
     <footer>
-      <form  id="prev-next-buttons-column" method="post">
-        <input type="submit" class="btn-dark" value="Prejšna stran" id="prejsna-stran" name="prejsna-stran"></input>
-        <input type="submit" class="btn-dark" value="Naslednja stran" id="naslednja-stran" name="naslednja-stran"></input>
-      </form>
+      <h4>Avtor: Aljaž Kosirnik</h4>
+      <div class="avtor">
+        <a class="icons" href="https://github.com/aljazkosirnik"
+          ><i class="fab fa-github"></i
+        ></a>
+        <a class="icons" href="https://www.linkedin.com/in/aljaz-kosirnik/"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+        <a class="icons" href="mailto:hello@aljazkosirnik.si"
+          ><i class="fas fa-envelope"></i
+        ></a>
+      </div>
     </footer>
   </body>
 </html>

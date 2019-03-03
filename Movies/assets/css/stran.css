@@ -197,13 +197,22 @@ footer {
   background-color: #fff;
   margin: 1rem auto 0;
   padding: 1rem;
-  position: absolute;
+  position: relative;
   bottom: 0;
   text-align: center;
 }
 
+#prev-next-buttons-column {
+  margin: 10px;
+  text-align: center;
+}
+
+#prev-next-buttons-column input {
+  margin: auto 30px;
+}
+
 footer h4 {
-  margin: 1rem auto;
+  margin: 3rem auto 1rem;
 }
 
 footer .avtor a {

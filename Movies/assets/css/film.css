@@ -18,6 +18,8 @@ body {
   padding: 0.7rem 1rem;
   border-radius: 5px;
   text-decoration: none;
+  transition-property: background-color;
+  transition-duration: 1s;
 }
 
 .btn-light:hover {
@@ -35,11 +37,17 @@ body {
   padding: 0.7rem 1rem;
   border-radius: 5px;
   text-decoration: none;
+  transition-property: background-color;
+  transition-duration: 1s;
 }
 
 .btn-dark:hover {
   color: white;
   background-color: rgb(60, 75, 83);
+}
+
+.disabled:hover {
+  cursor: not-allowed;
 }
 
 /* Navigation */
@@ -87,14 +95,12 @@ header {
 
 .display .display-text {
   position: absolute;
-  top: 40%;
-  left: 33%;
+  top: 50%;
+  width: 100%;
   color: white;
-  z-index: 1;
 }
 
 .display .display-text h1 {
-  border-bottom: white 1px solid;
   text-align: center;
   font-size: 3.5rem;
 }
@@ -164,7 +170,7 @@ header {
 
 .movie .movie-text .movie-zvrsti {
   width: 90%;
-  margin: auto;
+  margin-bottom: 1rem;
 }
 
 .movie .movie-text .movie-zvrsti h3 {
@@ -177,23 +183,42 @@ header {
 
 .movie .movie-production {
   background-color: #5d7485;
-  margin-top: 1.5rem;
-  height: 40vh;
   width: 100%;
 }
 
 .movie .movie-production h1 {
-  margin-top: 1rem;
+  margin-top: 3rem;
   text-align: center;
-  font-size: 1.5rem;
+}
+
+.movie .movie-production .production-companies {
+  margin: 2rem auto;
+  text-align: center;
+  width: 70%;
 }
 
 .movie .movie-production h3 {
-  margin-top: 1rem;
-  text-align: center;
+  display: inline;
+  margin: 1.5rem;
 }
 
 .movie .video {
   width: 100%;
   height: 70vh;
+}
+
+/* Footer */
+footer {
+  width: 100%;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+footer h4 {
+  margin-bottom: 1rem;
+}
+
+footer a {
+  color: black;
+  font-size: 2rem;
 }

@@ -5,6 +5,12 @@
     <title>Filmi | {{ naziv }}</title>
     <link rel="stylesheet" href="/assets/css/film.css" />
     <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <link
       href="https://fonts.googleapis.com/css?family=Roboto"
       rel="stylesheet"
     />
@@ -14,8 +20,10 @@
       <nav class="nav">
         <h1>{{ naziv }}</h1>
         <ul>
-          <li><a class="btn-dark" href="/">Domov</a></li>
-          <li><a class="btn-dark" href="/moji-filmi/">Moji filmi</a></li>
+          <li><a class="btn-dark" href="/stran/1/">Vse</a></li>
+          <li><a class="disabled btn-dark" href="#">Filmi</a></li>
+          <li><a class="disabled btn-dark" href="#">Oddaje</a></li>
+          <li><a class="btn-dark" href="/moji-filmi/">Priljubljeno</a></li>
         </ul>
       </nav>
     </header>
@@ -55,16 +63,32 @@
           </div>
           <div class="movie-production">
             <h1>Produkcija</h1>
-            {% for p in produkcija %}
-            <h3>{{ p }}</h3>
-            {% endfor %}
+            <div class="production-companies">
+              {% for p in produkcija %}
+              <h3>{{ p }}</h3>
+              {% endfor %}
+            </div>
           </div>
           <div class="video">
-            <!-- <iframe width="100%" height="100%" src="{{ video }}"> </iframe> -->
+            <iframe width="100%" height="100%" src="{{ video }}"> </iframe>
           </div>
         </div>
       </div>
     </section>
+    <footer>
+      <h4>Avtor: Aljaž Kosirnik</h4>
+      <div class="avtor">
+        <a class="icons" href="https://github.com/aljazkosirnik"
+          ><i class="fab fa-github"></i
+        ></a>
+        <a class="icons" href="https://www.linkedin.com/in/aljaz-kosirnik/"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+        <a class="icons" href="mailto:hello@aljazkosirnik.si"
+          ><i class="fas fa-envelope"></i
+        ></a>
+      </div>
+    </footer>
     <script>
       var proracun = document.getElementById("proracun");
       var zasluzek = document.getElementById("zasluzek");

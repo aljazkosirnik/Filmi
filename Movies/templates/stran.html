@@ -2,13 +2,13 @@
 <html>
   <head lang="en">
     <meta charset="UTF-8" />
-    <title>Priljubljeno</title>
-    <link rel="stylesheet" href="/assets/css/moji_filmi.css" />
+    <title>Vse | {{ stran }}</title>
+    <link rel="stylesheet" href="/assets/css/stran.css" />
     <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
-      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-      crossorigin="anonymous"
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+    crossorigin="anonymous"
     />
     <link
       href="https://fonts.googleapis.com/css?family=Roboto"
@@ -18,8 +18,8 @@
   <body>
     <header>
       <nav class="nav">
-        <h1>Priljubljeno</h1>
-        <ul>
+         <h1>Vse stran {{ stran }}</h1>
+         <ul>
           <li><a class="btn-dark" href="/stran/1/">Vse</a></li>
           <li><a class="disabled btn-dark" href="#">Filmi</a></li>
           <li><a class="disabled btn-dark" href="#">Oddaje</a></li>
@@ -30,7 +30,7 @@
     <section id="filmi">
       <table cellspacing="0">
         <tbody>
-          {% for v in moji_filmi %}
+          {% for v in vsi %}
           <tr>
             <td valign="bottom">
               <div class="img-col">
@@ -40,23 +40,18 @@
                 <h2>{{ v.naziv }}</h2>
                 <p>{{ v.opis }}</p>
                 <h5 class="datum-izdaje">{{ v.datum_izdaje }}</h5>
-                <h4>
-                  Ocena
+                <h4>Ocena
                   <span class="ocena">{{ v.ocena }} / 10</span>
                 </h4>
                 <form method="POST" class="text-button">
-                  <input
-                    class="hidden"
-                    value="{{ v.film_id }}"
-                    id="film_id"
-                    name="film_id"
-                  />
-                  <a class="btn-light" href="/film/{{ v.film_id }}/"
-                    >Več informacij</a
-                  >
-                  <a class="btn-light" href="/izbrisi/{{ v.key.id() }}/"
-                    >Izbriši iz priljubljenih</a
-                  >
+                  <input class="hidden" value="{{v.id_s}}" id="film_id" name="film_id">
+                  <input class="hidden" value="{{ v.naziv }}" id="naziv" name="naziv">
+                  <input class="hidden" value="{{ v.opis }}" id="opis" name="opis">
+                  <input class="hidden" value="{{ v.img }}" id="img" name="img">
+                  <input class="hidden" value="{{ v.datum_izdaje }}" id="datum_izdaje" name="datum_izdaje">
+                  <input class="hidden" value="{{ v.ocena }}" id="ocena" name="ocena">
+                  <a class="btn-light" href="/film/{{v.id_s}}/">Več informacij</a>
+                  <input type="submit" value="Dodaj med priljubljene" id="dodaj" name="dodaj" class="btn-light" href="/moji-filmi/"></input>
                 </form>
               </div>
             </td>
@@ -66,6 +61,10 @@
       </table>
     </section>
     <footer>
+      <form  id="prev-next-buttons-column" method="post">
+        <input type="submit" class="btn-dark" value="Prejšna stran" id="prejsna-stran" name="prejsna-stran"></input>
+        <input type="submit" class="btn-dark" value="Naslednja stran" id="naslednja-stran" name="naslednja-stran"></input>
+      </form>
       <h4>Avtor: Aljaž Kosirnik</h4>
       <div class="avtor">
         <a class="icons" href="https://github.com/aljazkosirnik"
@@ -79,13 +78,5 @@
         ></a>
       </div>
     </footer>
-    <script>
-      window.onload = function() {
-        if (!window.location.hash) {
-          window.location = window.location + "#loaded";
-          window.location.reload();
-        }
-      };
-    </script>
   </body>
 </html>
