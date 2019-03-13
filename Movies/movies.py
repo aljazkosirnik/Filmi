@@ -1,6 +1,6 @@
 from models import AllMovies
 import json
-from urllib2 import urlopen
+from urllib.request import urlopen
 
 
 def get_movies(page):

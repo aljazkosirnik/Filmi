@@ -1,5 +1,5 @@
 import json
-from urllib2 import urlopen
+from urllib.request import urlopen
 
 
 # Get single movie will be called when user goes on /film/single_id URL

@@ -1,6 +1,6 @@
 from models import AllShows
 import json
-from urllib2 import urlopen
+from urllib.request import urlopen
 
 
 def get_shows(page):
@@ -16,7 +16,7 @@ def get_shows(page):
     for i in result:
 
         if i["poster_path"] is None:
-            print str(i["poster_path"]) + "THERE IS NO POSTER PATH"
+            print(str(i["poster_path"]) + "THERE IS NO POSTER PATH")
 
         else:
             vsi.append(AllShows(i["id"], img_path + i["poster_path"], i["name"], i["vote_average"], i["first_air_date"]))
@@ -37,7 +37,7 @@ def get_show_category(category, page):
     for i in result:
 
         if i["poster_path"] is None:
-            print str(i["poster_path"]) + "THERE IS NO POSTER PATH"
+            print(str(i["poster_path"]) + "THERE IS NO POSTER PATH")
 
         else:
             vsi.append(AllShows(i["id"], img_path + i["poster_path"], i["name"], i["vote_average"], i["first_air_date"]))
