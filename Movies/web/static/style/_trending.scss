@@ -1,0 +1,67 @@
+.trending {
+  margin: 4rem 2rem;
+
+  h3 {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .carousel {
+    background: $navigation-color;
+    width: 95%;
+    border-radius: 5px;
+
+    .flickity {
+      &-button {
+        background: $main-color;
+
+        &-icon {
+          fill: $main-text;
+          transition: all 0.5s;
+
+          &:hover {
+            width: 70%;
+            height: 70%;
+          }
+        }
+      }
+    }
+
+    .flickity-prev-next-button {
+      &.previous {
+        left: -4%;
+      }
+
+      &.next {
+        right: -4%;
+      }
+    }
+
+    .dot.is-selected {
+      background: $main-text;
+    }
+
+    // Carousel-cell
+    &-cell {
+      width: 20%;
+      margin-right: 10px;
+      border-radius: 5px;
+      counter-increment: carousel-cell;
+
+      // Carousel-cell-img
+      &-img {
+        width: 100%;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      // If item does not have class Carousel-cell.is-selected
+      &:not(.is-selected) {
+        filter: brightness(0.5);
+      }
+    }
+  }
+}

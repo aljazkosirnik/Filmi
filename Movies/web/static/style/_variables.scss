@@ -1,0 +1,51 @@
+$navigation-color: #131c25;
+$main-color: #0c171e;
+$main-text: #10bde3;
+
+.btn-light {
+  background: $main-text;
+  color: $main-color;
+  border-radius: 5px;
+  padding: 0.3rem 1rem;
+  border: none;
+  transition: all 0.5s;
+
+  &:hover {
+    cursor: pointer;
+    background: #38daff;
+  }
+}
+
+.btn-dark {
+  background: $navigation-color;
+  color: #fff;
+  border-radius: 5px;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  transition: all 0.5s;
+  font-size: 1.4rem;
+
+  &:hover {
+    cursor: pointer;
+    background: #1a2733;
+  }
+}
+
+.prev-next-buttons-column {
+  margin: 4rem 0 3rem 13%;
+  text-align: center;
+  width: 70%;
+
+  input {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.main-text {
+  color: $main-text;
+}

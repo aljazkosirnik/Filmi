@@ -1,0 +1,46 @@
+.single {
+  #single-show {
+    padding-top: 25%;
+  }
+
+  &-text {
+    .overview {
+      width: 100%;
+    }
+
+    &-box {
+      width: 100%;
+    }
+
+    &-seasons {
+      padding: 22% 6rem 2rem 0;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 2rem;
+
+      &-card {
+        background: $navigation-color;
+        border-radius: 5px;
+        transition: all 0.5s;
+
+        &:hover {
+          background: #1a2733;
+        }
+
+        h3 {
+          margin: 0.5rem 0;
+        }
+
+        img {
+          margin-top: 1rem;
+          width: 80%;
+        }
+      }
+    }
+
+    &-video {
+      width: 84vw;
+    }
+  }
+}

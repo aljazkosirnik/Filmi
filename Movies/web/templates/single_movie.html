@@ -1,0 +1,87 @@
+{% extends 'layout.html' %} {% block title %} {{ single.title }}
+{% endblock %} {% block body %}
+<div class="container">
+  <!-- Navigacija na levi strani -->
+  {% include 'includes/_navigation.html' %}
+  <div class="right-side single">
+    <div class="single-img">
+      <img src="{{ single.back_img }}" />
+    </div>
+    <div class="single-text">
+      <h1 class="title">{{ single.title }}</h1>
+      <h2 class="tagline">{{ single.tagline }}</h2>
+      <h4 class="overview">{{ single.overview }}</h4>
+      <div class="single-text-box">
+        <h3 class="vote_average">
+          Ocena <span class="main-text">{{ single.vote_average }}</span> / 10
+        </h3>
+        <h3 class="runtime">
+          Dolžina: <span class="main-text">{{ single.runtime }}</span> min
+        </h3>
+      </div>
+      <div class="single-text-box">
+        <div class="single-text-genres text-center">
+          <h4 class="header">Zvrsti</h4>
+          {% for g in single.genres %}
+          <h4>
+            <a href="/kategorija/filmi/{{ g.id }}/">{{ g.name }}</a>
+          </h4>
+          {% endfor %}
+        </div>
+        <div class="single-text-production text-center">
+          <h4 class="header">Produkcija</h4>
+          {% for p in single.production %}
+          <h4>{{ p }}</h4>
+          {% endfor %}
+        </div>
+        <div class="single-text-money text-center">
+          <h4 class="header">Proračun</h4>
+          <h4>
+            Proračun: <span id="budget">{{ single.budget }}</span>
+          </h4>
+          <h4>
+            Zaslužek: <span id="revenue">{{ single.revenue }}</span>
+          </h4>
+        </div>
+      </div>
+    </div>
+    <div class="single-text-video">
+      <iframe width="100%" height="100%" src="{{ single.video }}"> </iframe>
+    </div>
+    <script>
+      // Func to calculate budget and revenue
+      var budget = document.querySelector("#budget");
+      var revenue = document.querySelector("#revenue");
+      function getDollar(num) {
+        Number.prototype.format = function(n, x) {
+          var re =
+            "(\\d)(?=(\\d{" + (x || 3) + "})+" + (n > 0 ? "\\." : "$") + ")";
+          return this.toFixed(Math.max(0, ~~n)).replace(
+            new RegExp(re, "g"),
+            "$1,"
+          );
+        };
+        var number = parseInt(num.innerHTML);
+        var formatedNum = "  $ " + number.format(0);
+        num.innerHTML = formatedNum;
+      }
+
+      // Call the functions
+      getDollar(budget);
+      getDollar(revenue);
+
+      // Video and img height
+      var img = document.querySelector(".single-img");
+      document.querySelector(
+        ".single-text-video"
+      ).style.top = `${img.clientHeight - 4}px`;
+    </script>
+    {% endblock %}
+  </div>
+</div>
+
+<!-- {{ single.img }}
+
+{{ single.single_id }}
+{{ single.production_img }}
+{{ single.video }} -->

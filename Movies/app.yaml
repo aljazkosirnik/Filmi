@@ -1,18 +1,7 @@
 runtime: python27
 api_version: 1
-threadsafe: yes
+threadsafe: true
 
 handlers:
-- url: /assets
-  static_dir: assets
-
-- url: .*
+- url: /.*
   script: main.app
-
-libraries:
-- name: webapp2
-  version: latest
-- name: jinja2
-  version: latest
-- name: markupsafe
-  version: latest

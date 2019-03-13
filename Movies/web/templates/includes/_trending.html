@@ -1,0 +1,18 @@
+<div class="trending">
+  <h3>popularno danes</h3>
+
+  <div
+    class="carousel"
+    data-flickity='{ "groupCells": true, "freeScroll": true, "wrapAround": true }'
+  >
+    {% for t in trending %}
+    <div class="carousel-cell">
+      <a href="/{{ t.url }}/{{ t.id_s }}/">
+        <div class="carousel-cell-img">
+          <img src="{{ t.poster_path }}" />
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,156 @@
+// Css for navigation menu that will be included in mostly any page
+
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 15vw;
+  background-color: $navigation-color;
+  margin-right: 2rem;
+  padding: 2rem 0 0 2rem;
+  color: #fff;
+  z-index: 5;
+
+  img {
+    padding-left: 0.7rem;
+    width: 70%;
+  }
+
+  h5 {
+    text-transform: capitalize;
+    padding-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  a {
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: block;
+    line-height: 1.7rem;
+  }
+
+  .brskaj {
+    padding: 4rem 1rem 2rem;
+
+    .menu-items {
+      font-size: 1rem;
+      line-height: 2.5rem;
+      text-transform: uppercase;
+      color: #fff;
+
+      &:hover {
+        border-right: $main-text 3px solid;
+        color: $main-text;
+      }
+    }
+  }
+
+  .kategorije {
+    padding: 1rem 1rem;
+
+    .category-items {
+      text-transform: capitalize;
+      color: rgba(255, 255, 255, 0.7);
+
+      &:hover {
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+}
+
+// Category tabs
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+.tabs {
+  display: block;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: 0;
+  overflow: hidden;
+}
+.tabs [class^="tab"] label,
+.tabs [class*=" tab"] label {
+  color: #efedef;
+  cursor: pointer;
+  display: block;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1rem;
+  padding: 1rem 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+.tabs [class^="tab"] [type="radio"],
+.tabs [class*=" tab"] [type="radio"] {
+  border-bottom: 1px solid rgba(239, 237, 239, 0.5);
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.tabs [class^="tab"] [type="radio"]:hover,
+.tabs [class^="tab"] [type="radio"]:focus,
+.tabs [class*=" tab"] [type="radio"]:hover,
+.tabs [class*=" tab"] [type="radio"]:focus {
+  border-bottom: 1px solid $main-text;
+}
+.tabs [class^="tab"] [type="radio"]:checked,
+.tabs [class*=" tab"] [type="radio"]:checked {
+  border-bottom: 2px solid $main-text;
+}
+.tabs [class^="tab"] [type="radio"]:checked + div,
+.tabs [class*=" tab"] [type="radio"]:checked + div {
+  opacity: 1;
+}
+.tabs [class^="tab"] [type="radio"] + div,
+.tabs [class*=" tab"] [type="radio"] + div {
+  display: block;
+  opacity: 0;
+  padding: 1rem 0;
+  width: 90%;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.tabs .tab-2 {
+  width: 40%;
+}
+.tabs .tab-2 [type="radio"] + div {
+  width: 200%;
+  margin-left: 200%;
+}
+.tabs .tab-2 [type="radio"]:checked + div {
+  margin-left: 0;
+}
+.tabs .tab-2:last-child [type="radio"] + div {
+  margin-left: 100%;
+}
+.tabs .tab-2:last-child [type="radio"]:checked + div {
+  margin-left: -100%;
+}
+
+// Other content
+.right-side {
+  height: 100%;
+  background-color: $main-color;
+  flex: 7.5;
+  padding-left: 20vw;
+}

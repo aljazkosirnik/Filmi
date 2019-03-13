@@ -1,0 +1,77 @@
+.single {
+  &-img {
+    position: absolute;
+    top: 0;
+    left: 15%;
+    z-index: 1;
+    filter: brightness(0.6) grayscale(0.6);
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &-text {
+    height: 100%;
+    padding: 17% 6rem 1rem 0;
+    text-shadow: #000 1px 1px;
+    z-index: 2;
+    position: relative;
+
+    .title {
+      width: max-content;
+      font-size: 2rem;
+      text-transform: uppercase;
+      border-bottom: 4px solid $main-text;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .tagline {
+      margin-bottom: 2rem;
+    }
+
+    .overview {
+      width: 80%;
+    }
+
+    &-box {
+      display: flex;
+      justify-content: space-between;
+      width: 80%;
+      padding: 0.5rem 3rem;
+      background: rgba(0, 0, 0, 0.4);
+      margin: 2rem 0;
+
+      .header {
+        border-bottom: 2px solid #fff;
+        text-align: center;
+        padding-bottom: 0.5rem;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: #fff;
+
+      &:hover {
+        color: rgba(255, 255, 255, 0.75);
+      }
+    }
+
+    &-video {
+      position: absolute;
+      z-index: 2;
+      left: 15%;
+      height: 100%;
+      width: 85%;
+      background: $main-color;
+
+      iframe {
+        border: none;
+      }
+    }
+  }
+}

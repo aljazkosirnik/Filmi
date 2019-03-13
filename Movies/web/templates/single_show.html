@@ -1,0 +1,44 @@
+{% extends 'layout.html' %} {% block title %} {{ single.title }}
+{% endblock %} {% block body %}
+<div class="container">
+  <!-- Navigacija na levi strani -->
+  {% include 'includes/_navigation.html' %}
+  <div class="right-side single">
+    <div class="single-img">
+      <img src="{{ single.back_img }}" />
+    </div>
+    <div class="single-text" id="single-show">
+      <h1 class="title">{{ single.title }}</h1>
+      <h2 class="tagline"></h2>
+      <h4 class="overview">{{ single.overview }}</h4>
+      <div class="single-text-box">
+        <h3>
+          Ocena <span class="main-text"> {{ single.vote_average }}</span> / 10
+        </h3>
+        <h3>
+          Število sezon
+          <span class="main-text"> {{ single.number_of_seasons }}</span>
+        </h3>
+        <h3>
+          Število epizod
+          <span class="main-text"> {{ single.number_of_episodes }}</span>
+        </h3>
+      </div>
+      </div>
+      <div class="single-text-seasons">
+        {% for s in single.season %}
+          <div class="single-text-seasons-card text-center">
+            <h3>{{s.name}}</h3>
+            <h5>Število epizod: {{s.episode_count}}</h5>
+            <h5>Datum predvajanja: {{s.air_date}}</h5>
+            <img src="https://image.tmdb.org/t/p/w500{{s.poster_path}}">
+          </div>
+        {% endfor %}
+      </div>
+      <div class="single-text-video">
+        <iframe width="100%" height="100%" src="{{ single.video }}"> </iframe>
+      </div>
+      {% endblock %}
+    </div>
+  </div>
+</div>

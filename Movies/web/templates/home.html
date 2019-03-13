@@ -1,0 +1,17 @@
+{% extends 'layout.html' %} {% block body %}
+<header id="home-header">
+  <img src="/img/logo.png" alt="" />
+</header>
+<div id="home-movies" onclick="window.location='/filmi/1/';">
+  <h1 class="home-text">Popularni Filmi</h1>
+  <div class="home-image"></div>
+</div>
+<div id="home-tv-shows" onclick="window.location='/oddaje/1/';">
+  <h1 class="home-text">Popularne Oddaje</h1>
+  <div class="home-image"></div>
+</div>
+<div id="home-my-favorites" onclick="window.location='/priljubljeno/';">
+  <h1 class="home-text">Priljubljeno</h1>
+  <div class="home-image"></div>
+</div>
+{% endblock %}

@@ -1,169 +1,168 @@
 #!/usr/bin/env python
-import os
-import jinja2
-import webapp2
-import json
-from urllib2 import urlopen
 from models import *
-import logging
-from webob import Request
-from google.appengine.api import users
+from trending import *
+from movies import *
+from shows import *
+from single import *
+from flask import Flask, render_template, flash, redirect, url_for, session, request, logging
+from flask_mysqldb import MySQL
+from wtforms import Form, StringField, TextAreaField, PasswordField, validators
+from passlib.hash import sha256_crypt
+from functools import wraps
 
-template_dir = os.path.join(os.path.dirname(__file__), "templates")
-jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir), autoescape=False)
+app = Flask(__name__,
+            static_url_path='',
+            static_folder='web/static',
+            template_folder='web/templates')
 
-
-request = Request.blank('/')
-
-
-class BaseHandler(webapp2.RequestHandler):
-
-    def write(self, *a, **kw):
-        return self.response.out.write(*a, **kw)
-
-    def render_str(self, template, **params):
-        t = jinja_env.get_template(template)
-        return t.render(params)
-
-    def render(self, template, **kw):
-        return self.write(self.render_str(template, **kw))
-
-    def render_template(self, view_filename, params=None):
-        if params is None:
-            params = {}
-        template = jinja_env.get_template(view_filename)
-        return self.response.out.write(template.render(params))
+# Config MySQL
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = '123'
+app.config['MYSQL_DB'] = 'movies'
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+# init MYSQL
+mysql = MySQL(app)
 
 
-class MainHandler(BaseHandler):
-    def get(self):
-        return self.render_template("index.html")
-
-    def post(self):
-        return self.redirect_to("filmi")
+# Index
+@app.route('/')
+def index():
+    return render_template('home.html')
 
 
-class StranHandler(BaseHandler):
-    def get(self, stran):
+# Movies
+@app.route('/filmi/<string:page>/', methods=['GET', 'POST'])
+def movies(page):
+    if request.method == "GET":
 
-        # Get popular data from API based on page client is on
-        vsi = []
-        img_path = "https://image.tmdb.org/t/p/w500/"
+        # Check movies.py for function
+        vsi = get_movies(page)
 
-        # variable "stran" is from url example /stran/1/ , /stran/2/
-        url = "https://api.themoviedb.org/3/movie/popular?api_key=26df55ce52689aa1d352444f3918da77&language=en-US&page=" + str(stran)
-        response_url = urlopen(url)
-        data = json.loads(response_url.read().decode("utf-8"))
-        result = data["results"]
-        for i in result:
-            vsi.append(VsiFilmi(i["id"], img_path + i["poster_path"], i["title"], i["vote_average"], i["release_date"], i["overview"]))
+        # Check trending.py for function
+        trending = get_trending()
 
-        params = {
-            "vsi": vsi,
-            "stran": stran
-        }
+        return render_template("movies.html", trending=trending, vsi=vsi, page=page)
 
-        return self.render_template("stran.html", params=params)
+    elif request.method == "POST":
+        paging = request.form
 
-    def post(self, stran):
-        # GET all buttons, and call the function if they are pressed
-        prejsnji_gumb = self.request.get("prejsna-stran")
-        naslednji_gumb = self.request.get("naslednja-stran")
-        vec_gumb = self.request.get("vec")
-        dodaj_gumb = self.request.get("dodaj")
-        nova_stran = int(stran)
-
-        # If previous or next button are pressed add or subtract the page number
-        if prejsnji_gumb:
-            if nova_stran == 1:
-                nova_stran = 1
-                stran = nova_stran
-                self.redirect("/stran/" + str(stran) + "/")
+        if "prejsna-stran" in paging:
+            if int(page) == 1:
+                page = 1
             else:
-                nova_stran -= 1
-                stran = nova_stran
-                self.redirect("/stran/" + str(stran) + "/")
-        elif naslednji_gumb:
-            nova_stran += 1
-            stran = nova_stran
-            self.redirect("/stran/" + str(stran) + "/")
+                page = int(page) - 1
+        elif "naslednja-stran" in paging:
+            page = int(page) + 1
 
-        if vec_gumb:
-            return self.redirect_to("film")
-        elif dodaj_gumb:
-            # Add this film_id to GAE to favorites
-            filmi = PriljubljeniFilmi(film_id=self.request.get("film_id"), naziv=self.request.get("naziv"), opis=self.request.get("opis"),
-                                      img=self.request.get("img"), ocena=self.request.get("ocena"), datum_izdaje=self.request.get("datum_izdaje"))
-            filmi.put()
-            return self.redirect_to("moji-filmi")
+        return redirect("/filmi/" + str(page))
 
 
-class FilmHandler(BaseHandler):
-    def get(self, film_id):
-        # Api is for specific movie that I get with film_id
-        url = "https://api.themoviedb.org/3/movie/" + film_id + "?api_key=26df55ce52689aa1d352444f3918da77&language=en-US"
-        response_url = urlopen(url)
-        data = json.loads(response_url.read().decode("utf-8"))
+# Shows
+@app.route('/oddaje/<string:page>/', methods=['GET', 'POST'])
+def shows(page):
+    if request.method == "GET":
 
-        slika = "https://image.tmdb.org/t/p/w500/" + data["poster_path"]
-        back_slika = "https://image.tmdb.org/t/p/original" + data["backdrop_path"]
+        # Check movies.py for function
+        vsi = get_shows(page)
 
-        zvrsti = []
-        produkcija = []
-        produkcija_img = []
+        # Check trending.py for function
+        trending = get_trending()
 
-        zvrsti_list = data["genres"]
-        z = 0
-        while z < len(zvrsti_list):
-            zvrsti.append(zvrsti_list[z]["name"])
-            z += 1
+        return render_template("shows.html", trending=trending, vsi=vsi, page=page)
 
-        produkcija_list = data["production_companies"]
-        p = 0
-        while p < len(produkcija_list):
-            produkcija.append(produkcija_list[p]["name"])
-            produkcija_img.append(produkcija_list[p]["logo_path"])
-            p += 1
+    elif request.method == "POST":
+        paging = request.form
 
-        video_url = "https://api.themoviedb.org/3/movie/" + film_id + "/videos?api_key=26df55ce52689aa1d352444f3918da77&language=en-US"
-        video_response_url = urlopen(video_url)
-        video_data = json.loads(video_response_url.read().decode("utf-8"))
-        video = "https://www.youtube.com/embed/" + video_data["results"][0]["key"]
+        if "prejsna-stran" in paging:
+            if int(page) == 1:
+                page = 1
+            else:
+                page = int(page) - 1
+        elif "naslednja-stran" in paging:
+            page = int(page) + 1
 
-        # Pass trough the page all that I get with the API
-        params = {"slika": slika, "back_slika": back_slika, "film_id": data["id"], "naziv": data["title"], "ocena": data["vote_average"], "datum_izdaje": data["release_date"],
-                  "opis": data["overview"], "kratek_opis": data["tagline"], "proracun": data["budget"], "zasluzek": data["revenue"], "cas": data["runtime"], "zvrsti": zvrsti,
-                  "produkcija": produkcija, "produkcija_img": produkcija_img, "video": video}
-
-        return self.render_template("film.html", params=params)
+        return redirect("/oddaje/" + str(page))
 
 
-class MojiFilmiHandler(BaseHandler):
-    def get(self):
-        moji_filmi = PriljubljeniFilmi.query().fetch()
-        params = {
-            "moji_filmi": moji_filmi
-        }
-        return self.render_template("moji-filmi.html", params=params)
+# Single Movie
+@app.route('/film/<string:id>/')
+def single_movie(id):
+
+    single = get_single_movie(id)
+
+    return render_template('single_movie.html', single=single)
 
 
-class IzbrisiHandler(BaseHandler):
-    def get(self, film_id):
-        # Delete movie from favorites
-        film = PriljubljeniFilmi.get_by_id(int(film_id))
-        film.key.delete()
-        return self.redirect_to("moji-filmi")
+# Single Show
+@app.route('/oddaja/<string:id>/')
+def single_show(id):
 
-    def post(self, film_id):
-        film = PriljubljeniFilmi.get_by_id(int(film_id))
-        film.key.delete()
-        return self.redirect_to("moji-filmi")
+    single = get_single_show(id)
+
+    return render_template('single_show.html', single=single)
 
 
-app = webapp2.WSGIApplication([
-    webapp2.Route('/', MainHandler),
-    webapp2.Route('/stran/<stran:(\d+)>/', StranHandler, name="filmi"),
-    webapp2.Route('/film/<film_id:(\d+)>/', FilmHandler, name="film"),
-    webapp2.Route('/moji-filmi/', MojiFilmiHandler, name="moji-filmi"),
-    webapp2.Route('/izbrisi/<film_id:\d+>/', IzbrisiHandler),
-], debug=True)
+# Movie Category
+@app.route('/kategorija/filmi/<string:category>/stran/<string:page>/', methods=['GET', 'POST'])
+def movie_category(category, page):
+    if request.method == "GET":
+
+        # Check movies.py for function
+        vsi = get_movie_category(category, page)
+
+        # Check trending.py for function
+        trending = get_trending()
+
+        return render_template("movie_category.html", trending=trending, vsi=vsi, page=page)
+
+    elif request.method == "POST":
+        paging = request.form
+
+        if "prejsna-stran" in paging:
+            if int(page) == 1:
+                page = 1
+            else:
+                page = int(page) - 1
+        elif "naslednja-stran" in paging:
+            page = int(page) + 1
+
+        return redirect("/kategorija/filmi/" + str(category) + "/stran/" + str(page))
+
+
+# Show Category
+@app.route('/kategorija/oddaje/<string:category>/stran/<string:page>/', methods=['GET', 'POST'])
+def show_category(category, page):
+    if request.method == "GET":
+
+        # Check shows.py for function
+        vsi = get_show_category(category, page)
+
+        # Check trending.py for function
+        trending = get_trending()
+
+        return render_template("show_category.html", trending=trending, vsi=vsi, page=page)
+
+    elif request.method == "POST":
+        paging = request.form
+
+        if "prejsna-stran" in paging:
+            if int(page) == 1:
+                page = 1
+            else:
+                page = int(page) - 1
+        elif "naslednja-stran" in paging:
+            page = int(page) + 1
+
+        return redirect("/kategorija/oddaje/" + str(category) + "/stran/" + str(page))
+
+
+# Favorites
+@app.route('/priljubljeno/')
+def favorites():
+    return render_template('favorites.html')
+
+
+if __name__ == '__main__':
+    app.secret_key = 'secret123'
+    app.run()

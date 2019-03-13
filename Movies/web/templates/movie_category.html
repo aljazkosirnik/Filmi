@@ -1,0 +1,46 @@
+{% extends 'layout.html' %} 
+{% block title %}
+Filmi | Stran {{page}}
+{% endblock %}
+{% block body %}
+<div class="container">
+  <!-- Navigacija na levi strani -->
+  {% include 'includes/_navigation.html' %}
+  <div class="right-side">
+    <!-- Slider na vrhu -->
+    {% include 'includes/_trending.html' %}
+    <!-- Seznam filmov -->
+    <section id="movies">
+        <h3>Stran {{page}}</h3>
+    <div class="column">
+      {% for v in vsi %}
+        <div class="card">
+          <a href="/film/{{v.id_s}}/">
+            <img src="{{ v.poster_path }}" />
+          </a>
+          <h5>{{ v.title }}</h5>
+          <div class="vote-date">
+            <h6>Ocena: {{ v.vote_average }} / 10</span></h6>
+            <h6 class="release-date">{{ v.release_date }}</h6>
+          </div>
+          
+          <form method="POST" class="text-button">
+            <button class="btn-light" href="/film/{{v.id_s}}/">VEČ</button>
+            <input style="display:none" value="{{v.id_s}}" id="film_id" name="film_id">
+            <button type="submit" id="dodaj" name="dodaj" class="btn-light" href="/priljubljeno/"><i class="far fa-star"></i></button>
+          </form>
+        </div>
+      {% endfor %}
+    </div>
+    </section>
+    <!-- Paging buttons -->
+    <section>
+      <form name="prev-next-buttons-column" class="prev-next-buttons-column" method="post">
+        <input type="submit" class="btn-dark" value="Prejšna stran" id="prejsna-stran" name="prejsna-stran"></input>
+        <input type="submit" class="btn-dark" value="Naslednja stran" id="naslednja-stran" name="naslednja-stran"></input>
+      </form>
+    </section>
+  </div>
+</div>
+
+{% endblock %}
