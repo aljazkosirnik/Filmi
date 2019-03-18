@@ -1,0 +1,34 @@
+// Css for grid layout of the page
+
+.container {
+  display: grid;
+  grid-template-columns: 15% 85%;
+  grid-template-areas:
+    "navigation rightside"
+    "    .      footer";
+
+  @include tablet {
+    grid-template-columns: 20% 80%;
+  }
+}
+
+.navigation {
+  grid-area: navigation;
+  position: fixed;
+  height: 100vh;
+  width: 15%;
+
+  @include tablet {
+    width: 20%;
+  }
+}
+
+// Other content
+.right-side {
+  grid-area: rightside;
+  padding-left: 2%;
+}
+
+.footer {
+  grid-area: footer;
+}

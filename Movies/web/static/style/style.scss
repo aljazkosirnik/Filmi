@@ -3,21 +3,22 @@
 @import "trending";
 @import "singlemovie";
 @import "singleshow";
+@import "layout";
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+
+  // 4k needs bigger font
+  @include four-k {
+    font-size: 32px;
+  }
 }
 
 body {
   font-family: "Roboto", sans-serif;
   color: #fff;
-}
-
-.container {
-  display: flex;
-  justify-content: center;
 }
 
 /******************* Domov - root page ******************************************************************************************************************/
@@ -114,6 +115,11 @@ body {
     grid-template-columns: repeat(4, 1fr);
     grid-row-gap: 2rem;
 
+    // Tablet
+    @include tablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
     &:hover {
       cursor: default;
     }
@@ -151,8 +157,26 @@ body {
         padding-left: 1rem;
         padding-right: 1rem;
 
+        @include normal {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        @include tablet {
+          flex-direction: column;
+          text-align: center;
+        }
+
         h6 {
           font-size: 0.7rem;
+
+          @include normal {
+            padding-bottom: 0.4rem;
+          }
+
+          @include tablet {
+            padding-bottom: 0.4rem;
+          }
         }
       }
 
@@ -162,6 +186,14 @@ body {
         position: absolute;
         bottom: 0.5rem;
         width: 92%;
+
+        @include normal {
+          display: inline-flex;
+        }
+
+        @include tablet {
+          display: inline-flex;
+        }
 
         button {
           margin: auto 0.5rem;

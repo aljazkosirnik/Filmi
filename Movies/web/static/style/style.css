@@ -8,6 +8,13 @@
   transition: all 0.5s;
 }
 
+@media (min-width: 501px) and (max-width: 768px) {
+  .btn-light {
+    padding: 0.2rem 0.7rem;
+    font-size: 0.7rem;
+  }
+}
+
 .btn-light:hover {
   cursor: pointer;
   background: #38daff;
@@ -22,6 +29,12 @@
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   font-size: 1.4rem;
+}
+
+@media (min-width: 501px) and (max-width: 768px) {
+  .btn-dark {
+    font-size: 1rem;
+  }
 }
 
 .btn-dark:hover {
@@ -49,27 +62,90 @@
 }
 
 .navigation {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 15vw;
   background-color: #131c25;
-  margin-right: 2rem;
-  padding: 2rem 0 0 2rem;
   color: #fff;
   z-index: 5;
+  padding: 1rem 1rem;
 }
 
 .navigation img {
-  padding-left: 0.7rem;
+  padding: 1rem 0 0 1rem;
   width: 70%;
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .navigation img {
+    width: 80%;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 768px) {
+  .navigation img {
+    width: 100%;
+  }
+}
+
+.navigation #avtor {
+  color: #fff;
+  line-height: 1rem;
+  padding: 0 0 0 1rem;
+}
+
+@media (min-width: 2001px) {
+  .navigation #avtor {
+    font-size: 0.7rem;
+  }
+}
+
+@media (min-width: 1201px) and (max-width: 2000px) {
+  .navigation #avtor {
+    font-size: 0.7rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .navigation #avtor {
+    font-size: 0.6rem;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 768px) {
+  .navigation #avtor {
+    font-size: 0.75rem;
+  }
 }
 
 .navigation h5 {
   text-transform: capitalize;
   padding-bottom: 1rem;
   color: rgba(255, 255, 255, 0.5);
+}
+
+@media (min-width: 2001px) {
+  .navigation h5 {
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 1201px) and (max-width: 2000px) {
+  .navigation h5 {
+    font-size: 0.7rem;
+    padding-bottom: 0.8rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .navigation h5 {
+    font-size: 0.7rem;
+    padding-bottom: 0.7rem;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 768px) {
+  .navigation h5 {
+    font-size: 0.8rem;
+    padding-bottom: 0.7rem;
+  }
 }
 
 .navigation a {
@@ -79,8 +155,36 @@
   line-height: 1.7rem;
 }
 
+@media (min-width: 2001px) {
+  .navigation a {
+    font-size: 0.8rem;
+    line-height: 1.5rem;
+  }
+}
+
+@media (min-width: 1201px) and (max-width: 2000px) {
+  .navigation a {
+    font-size: 0.7rem;
+    line-height: 1.5rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .navigation a {
+    font-size: 0.7rem;
+    line-height: 1.4rem;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 768px) {
+  .navigation a {
+    font-size: 0.6rem;
+    line-height: 1.4rem;
+  }
+}
+
 .navigation .brskaj {
-  padding: 4rem 1rem 2rem;
+  padding: 3rem 1rem 2rem;
 }
 
 .navigation .brskaj .menu-items {
@@ -88,6 +192,33 @@
   line-height: 2.5rem;
   text-transform: uppercase;
   color: #fff;
+}
+
+@media (min-width: 2001px) {
+  .navigation .brskaj .menu-items {
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 1201px) and (max-width: 2000px) {
+  .navigation .brskaj .menu-items {
+    font-size: 0.7rem;
+    line-height: 2rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .navigation .brskaj .menu-items {
+    font-size: 0.58rem;
+    line-height: 1.6rem;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 768px) {
+  .navigation .brskaj .menu-items {
+    font-size: 0.58rem;
+    line-height: 1.7rem;
+  }
 }
 
 .navigation .brskaj .menu-items:hover {
@@ -140,6 +271,29 @@ select:focus {
   text-transform: uppercase;
 }
 
+@media (min-width: 1201px) and (max-width: 2000px) {
+  .tabs [class^="tab"] label,
+  .tabs [class*=" tab"] label {
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .tabs [class^="tab"] label,
+  .tabs [class*=" tab"] label {
+    font-size: 0.7rem;
+    padding: 0.5rem 0;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 768px) {
+  .tabs [class^="tab"] label,
+  .tabs [class*=" tab"] label {
+    font-size: 0.7rem;
+    padding: 0.5rem 0;
+  }
+}
+
 .tabs [class^="tab"] [type="radio"],
 .tabs [class*=" tab"] [type="radio"] {
   border-bottom: 1px solid rgba(239, 237, 239, 0.5);
@@ -181,7 +335,7 @@ select:focus {
 }
 
 .tabs .tab-2 {
-  width: 40%;
+  width: 50%;
 }
 
 .tabs .tab-2 [type="radio"] + div {
@@ -204,10 +358,6 @@ select:focus {
 .right-side {
   height: 100%;
   background-color: #0c171e;
-  -webkit-box-flex: 7.5;
-      -ms-flex: 7.5;
-          flex: 7.5;
-  padding-left: 20vw;
 }
 
 .trending {
@@ -288,7 +438,7 @@ select:focus {
 
 .single-text {
   height: 100%;
-  padding: 17% 6rem 1rem 0;
+  padding: 17% 6rem 1rem 2rem;
   text-shadow: #000 1px 1px;
   z-index: 2;
   position: relative;
@@ -358,6 +508,7 @@ select:focus {
 
 .single #single-show {
   padding-top: 25%;
+  height: auto;
 }
 
 .single-text .overview {
@@ -369,7 +520,7 @@ select:focus {
 }
 
 .single-text-seasons {
-  padding: 22% 6rem 2rem 0;
+  padding: 22% 6rem 2rem 2rem;
   width: 100%;
   display: -ms-grid;
   display: grid;
@@ -402,6 +553,49 @@ select:focus {
   width: 84vw;
 }
 
+.container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 15% 85%;
+      grid-template-columns: 15% 85%;
+      grid-template-areas: "navigation rightside" "    .      footer";
+}
+
+@media (min-width: 501px) and (max-width: 768px) {
+  .container {
+    -ms-grid-columns: 20% 80%;
+        grid-template-columns: 20% 80%;
+  }
+}
+
+.navigation {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: navigation;
+  position: fixed;
+  height: 100vh;
+  width: 15%;
+}
+
+@media (min-width: 501px) and (max-width: 768px) {
+  .navigation {
+    width: 20%;
+  }
+}
+
+.right-side {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: rightside;
+  padding-left: 2%;
+}
+
+.footer {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: footer;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -409,18 +603,15 @@ select:focus {
           box-sizing: border-box;
 }
 
+@media (min-width: 2001px) {
+  * {
+    font-size: 32px;
+  }
+}
+
 body {
   font-family: "Roboto", sans-serif;
   color: #fff;
-}
-
-.container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 
 /******************* Domov - root page ******************************************************************************************************************/
@@ -529,6 +720,13 @@ body {
   grid-row-gap: 2rem;
 }
 
+@media (min-width: 501px) and (max-width: 768px) {
+  #movies .column {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 #movies .column:hover {
   cursor: default;
 }
@@ -576,8 +774,40 @@ body {
   padding-right: 1rem;
 }
 
+@media (min-width: 769px) and (max-width: 1200px) {
+  #movies .column .card .vote-date {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 768px) {
+  #movies .column .card .vote-date {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    text-align: center;
+  }
+}
+
 #movies .column .card .vote-date h6 {
   font-size: 0.7rem;
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  #movies .column .card .vote-date h6 {
+    padding-bottom: 0.4rem;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 768px) {
+  #movies .column .card .vote-date h6 {
+    padding-bottom: 0.4rem;
+  }
 }
 
 #movies .column .card .text-button {
@@ -586,6 +816,22 @@ body {
   position: absolute;
   bottom: 0.5rem;
   width: 92%;
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  #movies .column .card .text-button {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 768px) {
+  #movies .column .card .text-button {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+  }
 }
 
 #movies .column .card .text-button button {

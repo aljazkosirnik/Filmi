@@ -1,26 +1,69 @@
 // Css for navigation menu that will be included in mostly any page
 
 .navigation {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 15vw;
   background-color: $navigation-color;
-  margin-right: 2rem;
-  padding: 2rem 0 0 2rem;
   color: #fff;
   z-index: 5;
+  padding: 1rem 1rem;
 
   img {
-    padding-left: 0.7rem;
+    padding: 1rem 0 0 1rem;
     width: 70%;
+
+    @include normal {
+      width: 80%;
+    }
+
+    @include tablet {
+      width: 100%;
+    }
+  }
+
+  #avtor {
+    color: #fff;
+    line-height: 1rem;
+    padding: 0 0 0 1rem;
+
+    @include four-k {
+      font-size: 0.7rem;
+    }
+
+    @include widescreen {
+      font-size: 0.7rem;
+    }
+
+    @include normal {
+      font-size: 0.6rem;
+    }
+
+    @include tablet {
+      font-size: 0.75rem;
+    }
   }
 
   h5 {
     text-transform: capitalize;
     padding-bottom: 1rem;
     color: rgba(255, 255, 255, 0.5);
+
+    @include four-k {
+      font-size: 0.8rem;
+    }
+
+    @include widescreen {
+      font-size: 0.7rem;
+      padding-bottom: 0.8rem;
+    }
+
+    @include normal {
+      font-size: 0.7rem;
+      padding-bottom: 0.7rem;
+    }
+
+    @include tablet {
+      font-size: 0.8rem;
+      padding-bottom: 0.7rem;
+    }
   }
 
   a {
@@ -28,16 +71,55 @@
     text-decoration: none;
     display: block;
     line-height: 1.7rem;
+
+    @include four-k {
+      font-size: 0.8rem;
+      line-height: 1.5rem;
+    }
+
+    @include widescreen {
+      font-size: 0.7rem;
+      line-height: 1.5rem;
+    }
+
+    @include normal {
+      font-size: 0.7rem;
+      line-height: 1.4rem;
+    }
+
+    @include tablet {
+      font-size: 0.6rem;
+      line-height: 1.4rem;
+    }
   }
 
   .brskaj {
-    padding: 4rem 1rem 2rem;
+    padding: 3rem 1rem 2rem;
 
     .menu-items {
       font-size: 1rem;
       line-height: 2.5rem;
       text-transform: uppercase;
       color: #fff;
+
+      @include four-k {
+        font-size: 0.8rem;
+      }
+
+      @include widescreen {
+        font-size: 0.7rem;
+        line-height: 2rem;
+      }
+
+      @include normal {
+        font-size: 0.58rem;
+        line-height: 1.6rem;
+      }
+
+      @include tablet {
+        font-size: 0.58rem;
+        line-height: 1.7rem;
+      }
 
       &:hover {
         border-right: $main-text 3px solid;
@@ -90,6 +172,20 @@ select:focus {
   padding: 1rem 0;
   text-align: center;
   text-transform: uppercase;
+
+  @include widescreen {
+    font-size: 0.8rem;
+  }
+
+  @include normal {
+    font-size: 0.7rem;
+    padding: 0.5rem 0;
+  }
+
+  @include tablet {
+    font-size: 0.7rem;
+    padding: 0.5rem 0;
+  }
 }
 .tabs [class^="tab"] [type="radio"],
 .tabs [class*=" tab"] [type="radio"] {
@@ -131,7 +227,7 @@ select:focus {
   transition: all 0.3s ease-in-out;
 }
 .tabs .tab-2 {
-  width: 40%;
+  width: 50%;
 }
 .tabs .tab-2 [type="radio"] + div {
   width: 200%;
@@ -151,6 +247,4 @@ select:focus {
 .right-side {
   height: 100%;
   background-color: $main-color;
-  flex: 7.5;
-  padding-left: 20vw;
 }

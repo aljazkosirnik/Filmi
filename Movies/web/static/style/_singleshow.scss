@@ -1,6 +1,7 @@
 .single {
   #single-show {
     padding-top: 25%;
+    height: auto;
   }
 
   &-text {
@@ -13,7 +14,7 @@
     }
 
     &-seasons {
-      padding: 22% 6rem 2rem 0;
+      padding: 22% 6rem 2rem 2rem;
       width: 100%;
       display: grid;
       grid-template-columns: repeat(4, 1fr);

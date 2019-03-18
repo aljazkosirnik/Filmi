@@ -5,7 +5,6 @@ from movies import *
 from shows import *
 from single import *
 from flask import Flask, render_template, flash, redirect, url_for, session, request, logging
-from flask_mysqldb import MySQL
 
 app = Flask(__name__,
             static_url_path='',
@@ -18,8 +17,6 @@ app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = '123'
 app.config['MYSQL_DB'] = 'movies'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
-# init MYSQL
-mysql = MySQL(app)
 
 
 # Index
@@ -162,4 +159,4 @@ def favorites():
 
 if __name__ == '__main__':
     app.secret_key = 'secret123'
-    app.run()
+    app.run(debug=True)

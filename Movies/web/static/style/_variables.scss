@@ -2,6 +2,59 @@ $navigation-color: #131c25;
 $main-color: #0c171e;
 $main-text: #10bde3;
 
+// Smartphone
+$screen-sm-max: 500px;
+
+// Tablet
+$screen-md-min: 501px;
+$screen-md-max: 768px;
+
+// Normal
+$screen-lg-min: 769px;
+$screen-lg-max: 1200px;
+
+// Widescreen
+$screen-xl-min: 1201px;
+$screen-xl-max: 2000px;
+
+// 4k
+$screen-4k-min: 2001px;
+
+// Smartphones mixin
+@mixin smartphone {
+  @media (min-width: #{$screen-sm-max}) {
+    @content;
+  }
+}
+
+// Tablets mixin
+@mixin tablet {
+  @media (min-width: #{$screen-md-min}) and (max-width: #{$screen-md-max}) {
+    @content;
+  }
+}
+
+// Normal mixin
+@mixin normal {
+  @media (min-width: #{$screen-lg-min}) and (max-width: #{$screen-lg-max}) {
+    @content;
+  }
+}
+
+// Widescreens mixin
+@mixin widescreen {
+  @media (min-width: #{$screen-xl-min}) and (max-width: #{$screen-xl-max}) {
+    @content;
+  }
+}
+
+// 4k mixin
+@mixin four-k {
+  @media (min-width: #{$screen-4k-min}) {
+    @content;
+  }
+}
+
 .btn-light {
   background: $main-text;
   color: $main-color;
@@ -9,6 +62,11 @@ $main-text: #10bde3;
   padding: 0.3rem 1rem;
   border: none;
   transition: all 0.5s;
+
+  @include tablet {
+    padding: 0.2rem 0.7rem;
+    font-size: 0.7rem;
+  }
 
   &:hover {
     cursor: pointer;
@@ -24,6 +82,10 @@ $main-text: #10bde3;
   border: none;
   transition: all 0.5s;
   font-size: 1.4rem;
+
+  @include tablet {
+    font-size: 1rem;
+  }
 
   &:hover {
     cursor: pointer;

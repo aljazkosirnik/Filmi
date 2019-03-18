@@ -25,9 +25,9 @@ Filmi | Stran {{page}}
           </div>
           
           <form method="POST" class="text-button">
-            <button class="btn-light" href="/film/{{v.id_s}}/">VEČ</button>
-            <input style="display:none" value="{{v.id_s}}" id="film_id" name="film_id">
-            <button type="submit" id="dodaj" name="dodaj" class="btn-light" href="/priljubljeno/"><i class="far fa-star"></i></button>
+            <button disabled class="btn-light" href="/film/{{v.id_s}}/">VEČ</button>
+            <!-- <input style="display:none" value="{{v.id_s}}" id="film_id" name="film_id"> -->
+            <button disabled type="submit" id="dodaj" name="dodaj" class="btn-light" href="/priljubljeno/"><i class="far fa-star"></i></button>
           </form>
         </div>
       {% endfor %}
