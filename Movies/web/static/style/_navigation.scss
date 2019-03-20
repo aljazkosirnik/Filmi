@@ -4,7 +4,18 @@
   background-color: $navigation-color;
   color: #fff;
   z-index: 5;
-  padding: 1rem 1rem;
+  padding: 1rem;
+
+  @include smartphone {
+    position: sticky !important;
+    top: 0;
+    left: 0;
+    padding: 0.5rem;
+  }
+
+  .menu {
+    display: none;
+  }
 
   img {
     padding: 1rem 0 0 1rem;
@@ -16,6 +27,11 @@
 
     @include tablet {
       width: 100%;
+    }
+
+    @include smartphone {
+      width: 30%;
+      padding: 0 0 0 1rem;
     }
   }
 
@@ -38,6 +54,24 @@
 
     @include tablet {
       font-size: 0.75rem;
+    }
+
+    @include smartphone {
+      font-size: 0.6rem;
+    }
+  }
+
+  .menu-icon {
+    display: none;
+
+    @include smartphone {
+      color: $main-text;
+
+      position: absolute;
+      top: 0;
+      left: 85%;
+      padding: 1.3rem 2rem 0 0;
+      font-size: 1.2rem;
     }
   }
 
@@ -91,10 +125,27 @@
       font-size: 0.6rem;
       line-height: 1.4rem;
     }
+
+    @include smartphone {
+      font-size: 0.6rem;
+      line-height: 1.4rem;
+    }
   }
 
   .brskaj {
     padding: 3rem 1rem 2rem;
+
+    @include normal {
+      padding: 3rem 1rem 0;
+    }
+
+    @include tablet {
+      padding: 3rem 1rem 0;
+    }
+
+    @include smartphone {
+      padding: 1rem 1rem 0;
+    }
 
     .menu-items {
       font-size: 1rem;
@@ -118,6 +169,11 @@
 
       @include tablet {
         font-size: 0.58rem;
+        line-height: 1.7rem;
+      }
+
+      @include smartphone {
+        font-size: 0.7rem;
         line-height: 1.7rem;
       }
 
@@ -183,6 +239,11 @@ select:focus {
   }
 
   @include tablet {
+    font-size: 0.7rem;
+    padding: 0.5rem 0;
+  }
+
+  @include smartphone {
     font-size: 0.7rem;
     padding: 0.5rem 0;
   }

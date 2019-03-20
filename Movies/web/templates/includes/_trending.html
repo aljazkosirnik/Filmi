@@ -15,4 +15,13 @@
     </div>
     {% endfor %}
   </div>
+  <script>
+    if (screen.width <= "500") {
+      var carousel = document.querySelector(".carousel");
+      carousel.setAttribute(
+        "data-flickity",
+        '{ "groupCells": 2, "freeScroll": true, "wrapAround": true }'
+      );
+    }
+  </script>
 </div>

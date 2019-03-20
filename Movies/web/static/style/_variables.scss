@@ -22,7 +22,7 @@ $screen-4k-min: 2001px;
 
 // Smartphones mixin
 @mixin smartphone {
-  @media (min-width: #{$screen-sm-max}) {
+  @media (max-width: #{$screen-sm-max}) {
     @content;
   }
 }
@@ -87,6 +87,10 @@ $screen-4k-min: 2001px;
     font-size: 1rem;
   }
 
+  @include smartphone() {
+    font-size: 1rem;
+  }
+
   &:hover {
     cursor: pointer;
     background: #1a2733;
@@ -101,6 +105,28 @@ $screen-4k-min: 2001px;
   input {
     margin-left: 1rem;
     margin-right: 1rem;
+
+    @include smartphone {
+      margin: 0 0 0 1rem;
+    }
+  }
+
+  @include smartphone {
+    background: $main-color;
+    display: inline-flex;
+    margin: auto;
+    padding: 1rem;
+    width: 100%;
+    z-index: 3;
+  }
+}
+
+@include smartphone {
+  #paging {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
   }
 }
 
@@ -110,4 +136,8 @@ $screen-4k-min: 2001px;
 
 .main-text {
   color: $main-text;
+}
+
+.show {
+  display: inline !important;
 }

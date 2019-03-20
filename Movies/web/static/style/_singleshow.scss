@@ -2,6 +2,10 @@
   #single-show {
     padding-top: 25%;
     height: auto;
+
+    @include smartphone {
+      padding: 1rem;
+    }
   }
 
   &-text {
@@ -20,10 +24,19 @@
       grid-template-columns: repeat(4, 1fr);
       grid-gap: 2rem;
 
+      @include smartphone {
+        padding: 2rem 0;
+        display: initial;
+      }
+
       &-card {
         background: $navigation-color;
         border-radius: 5px;
         transition: all 0.5s;
+
+        @include smartphone {
+          margin: 1rem;
+        }
 
         &:hover {
           background: #1a2733;
@@ -37,11 +50,19 @@
           margin-top: 1rem;
           width: 80%;
         }
+
+        @include tablet {
+          font-size: 0.8rem;
+        }
       }
     }
 
     &-video {
       width: 84vw;
+
+      @include tablet {
+        height: 30%;
+      }
     }
   }
 }

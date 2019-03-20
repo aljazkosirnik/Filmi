@@ -32,7 +32,7 @@ body {
     img {
       display: block;
       margin: auto;
-      padding-top: 1rem;
+      padding: 0.5rem;
     }
   }
 
@@ -42,9 +42,21 @@ body {
     margin: auto;
 
     .home-image {
-      background: url("/img/movies.jpg") center;
+      background: url("/img/movies.jpg") no-repeat center;
       background-size: 100% auto;
       transition: filter 1s;
+
+      @include normal {
+        background-size: auto;
+      }
+
+      @include tablet {
+        background-size: auto;
+      }
+
+      @include smartphone {
+        background-size: auto;
+      }
     }
 
     &:hover .home-image {
@@ -58,6 +70,19 @@ body {
     .home-image {
       background: url("/img/tv-shows.jpg") no-repeat center;
       background-size: 100% auto;
+
+      @include normal {
+        background-size: auto;
+      }
+
+      @include tablet {
+        background-size: auto;
+      }
+
+      @include smartphone {
+        background-size: auto;
+        background: url("/img/tv-shows-2.jpg") no-repeat 56% 40%;
+      }
     }
 
     &:hover .home-image {
@@ -71,6 +96,18 @@ body {
     .home-image {
       background: url("/img/my-favorites.jpg") no-repeat center;
       background-size: 100% auto;
+
+      @include normal {
+        background-size: auto;
+      }
+
+      @include tablet {
+        background-size: auto;
+      }
+
+      @include smartphone {
+        background-size: auto;
+      }
     }
 
     &:hover .home-image {
@@ -90,6 +127,10 @@ body {
   font-size: 2.3rem;
   text-shadow: rgb(0, 0, 0) 2px 2px;
   cursor: pointer;
+
+  @include smartphone {
+    font-size: 1.5rem;
+  }
 }
 
 .home-image {
@@ -104,10 +145,18 @@ body {
   margin-top: 5rem;
   margin-left: 2%;
 
+  @include smartphone {
+    margin: auto;
+  }
+
   h3 {
     font-size: 1.5rem;
     text-transform: uppercase;
     margin-bottom: 1rem;
+
+    @include smartphone {
+      text-align: center;
+    }
   }
 
   .column {
@@ -115,9 +164,12 @@ body {
     grid-template-columns: repeat(4, 1fr);
     grid-row-gap: 2rem;
 
-    // Tablet
     @include tablet {
       grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include smartphone {
+      grid-template-columns: repeat(1, 1fr);
     }
 
     &:hover {
@@ -133,6 +185,10 @@ body {
       margin: 1rem 0;
       padding: 0.5rem;
       transition: all 0.5s;
+
+      @include smartphone {
+        width: 100%;
+      }
 
       &:hover {
         background: #1a2733;

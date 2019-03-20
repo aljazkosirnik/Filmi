@@ -10,6 +10,10 @@
   @include tablet {
     grid-template-columns: 20% 80%;
   }
+
+  @include smartphone {
+    display: block;
+  }
 }
 
 .navigation {
@@ -21,12 +25,21 @@
   @include tablet {
     width: 20%;
   }
+
+  @include smartphone {
+    width: auto;
+    height: 100%;
+  }
 }
 
 // Other content
 .right-side {
   grid-area: rightside;
   padding-left: 2%;
+
+  @include smartphone {
+    padding: 1rem;
+  }
 }
 
 .footer {
