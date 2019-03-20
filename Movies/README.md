@@ -16,11 +16,10 @@ Page is live on: https://filmi-aljazkosirnik.appspot.com/
 
 ## Todo
 
-* Make it responsive for all devices
+* ~~Make it responsive for all devices~~
 * Stop using GAE and switch to SQL DB for accounts and data of users
-* Use JavaScript to make it more dynamic
 * Make a login page for users to make their own account and have their own popular selection (right now its site-wide)
-* Make a filter that can not only sort movies by popular, new, trendy but also for TV shows
+* ~~Make a filter that can not only sort movies by popular, new, trendy but also for TV shows~~
 
 
 ## Author
