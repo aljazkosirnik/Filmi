@@ -11,7 +11,7 @@ Page is live on: https://filmi-app.herokuapp.com/
 * [TMDb](https://developers.themoviedb.org/3/getting-started/introduction) - The Movie Database (TMDb) API
 * Python Flask
 * HTML5
-* CSS3
+* Sass
 
 ## Todo
 
