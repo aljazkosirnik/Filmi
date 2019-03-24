@@ -15,6 +15,7 @@
 
   .menu {
     display: none;
+    height: 100%;
   }
 
   img {
@@ -118,12 +119,12 @@
 
     @include normal {
       font-size: 0.7rem;
-      line-height: 1.4rem;
+      line-height: 1.2rem;
     }
 
     @include tablet {
       font-size: 0.6rem;
-      line-height: 1.4rem;
+      line-height: 1.2rem;
     }
 
     @include smartphone {
@@ -133,7 +134,8 @@
   }
 
   .brskaj {
-    padding: 3rem 1rem 2rem;
+    padding: 2rem 1rem 0;
+    height: 20%;
 
     @include normal {
       padding: 3rem 1rem 0;
@@ -186,6 +188,7 @@
 
   .kategorije {
     padding: 1rem 1rem;
+    height: 65%;
 
     .category-items {
       text-transform: capitalize;
