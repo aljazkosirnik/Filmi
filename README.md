@@ -15,7 +15,6 @@ Page is live on: https://filmi-app.herokuapp.com/
 
 ## Todo
 
-* Make it responsive for all devices
 * Create a login and registration page and store favorite movies and shows for users
 
 
